@@ -1,46 +1,46 @@
-var position    = -1,                                                       // global variable to keep track of the position of the carousel
-	images      = ['img/chicago.jpg','img/la.jpg','img/ny.jpg'],            // image data => can scale
-	parent      = document.getElementById('photos'),
-	clearActive = function(p){
-		for(var i = 0; i < p.length; i++){
-			p[i].classList.remove('active');
-		}
-	},
-	update = function(evt){
-		clearActive(parent.children);
-		if(evt.classList.contains('prev')){
-			if(position > 0){
-				position --;
+var position    = -1,                                                //starting postion of image array
+	images      = ['img/chicago.jpg','img/la.jpg','img/ny.jpg'],     // storing images into images
+	parent      = document.getElementById('photos'),                 //grabs photos from html and stores it into parents
+	clearActive = function(p){                                       //sets clearActive to a function and passing photos
+		for(var i = 0; i < p.length; i++){                           //the loops throught the array of photos
+			p[i].classList.remove('active');                         //removes active claass from photos
+		}                                                            //end of loop
+	},                                                               //end of function
+	update = function(evt){                                          //sets update to equal fucntions                                        
+		clearActive(parent.children);                                //that grabs clearactive from line 4
+		if(evt.classList.contains('prev')){                          //that fires off
+			if(position > 0){                                        // comepares it to the current postion of the image
+				position --;                                         // subtracts 1 going to the prev photo
 			} else {
-				position = images.length - 1;
+				position = images.length - 1;                        //sets position to the prev image
 			}
 			
 		} else {
-			if(position == (images.length - 1)){
+			if(position == (images.length - 1)){                    //if its negative return it back to 0
 				position = 0;
 			} else {
-				position ++;
+				position ++;                                       //if not then add 1
 			}
 		}
-		return imgHashMap[position].elem.classList.add('active');
+		return imgHashMap[position].elem.classList.add('active');  //returns the current page and gives active to display
 	},
-	slide       = function(){
-		return setTimeout(function(){
-			if(position >= images.length - 1){
-				position = -1;
+	slide       = function(){                                      // sets up slide to a function
+		return setTimeout(function(){                              // returns set timeout function
+			if(position >= images.length - 1){                     // checks to see which image is net 
+				position = -1;                                     // thanks that image number and minus 1 to get the actual photo number
 			}
-			position++
-			console.log(position)
-			var key,keys;
-			keys = Object.keys(imgHashMap);
-			clearActive(parent.children);
-			for(key in keys){
-				if(position == imgHashMap[key].id){
-					imgHashMap[key].elem.classList.add('active');
+			position++                                             //increments postion by 1 
+			console.log(position)                                  // consoles log it
+			var key,keys;                                          // creates two vars to store keys
+			keys = Object.keys(imgHashMap);                        // set keys to object.keys of image
+			clearActive(parent.children);                          //grabs active
+			for(key in keys){                                      // loops through imagehash and finds keys
+				if(position == imgHashMap[key].id){                // compares current postion number to image id if
+					imgHashMap[key].elem.classList.add('active');  // they match give it active and it will display
 				}
 			}	
-			slide(imgHashMap,(images.length -1))
-		},6000);
+			slide(imgHashMap,(images.length -1))                   //passing the image and the lmage array length
+		},6000);                                                   // runs every 6 seconds
 
 	},
 	imgHashMap = (function(elem,files){
