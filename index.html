@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link charset="UTF-8">
+    	<link rel="stylesheet" type="text/css" href="css/main.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+		<title>Photo Carousel</title>
+	</head>
+	<body>
+		<div container="container">
+			<h1>Photo Carousel</h1>
+			<div id="carousel">
+
+				<span class="arrows prev" onclick="update(this)">
+					<img src="img/arrow-left.png">
+				</span>
+
+				<div id="photos">
+					<div class="photo">
+						<img class="responsive-img">
+					</div>
+				</div>
+
+				<span class="arrows next" onclick="update(this)">
+					<img src="img/arrow-right.png">
+				</span>
+
+			</div> <!-- End Carousel -->
+		</div>
+		<script src="js/main.js"></script>
+	</body>
+</html>
+

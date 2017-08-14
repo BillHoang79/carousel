@@ -1,0 +1,31 @@
+h1 {
+	text-align: center;
+}
+
+#photos {
+	width: calc(100% - 50px);
+	margin: 0 auto;
+}
+.photo .responsive-img {
+	width: 100%;
+	display: none;
+}
+.photo.active .responsive-img {
+	display: block;
+}
+
+.arrows {
+	position: fixed;
+	z-index: 3;
+	top: 52%;
+	cursor: pointer;
+}
+
+.arrows.prev {
+	left: 5%;
+
+}
+
+.arrows.next {
+	right: 5%;
+}
